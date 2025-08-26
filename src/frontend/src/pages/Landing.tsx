@@ -2,10 +2,12 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/app/Navbar";
 import { azleLogo, viteLogo } from "@/exports";
 import { Button } from "@/components/ui/button";
-import { Book, ExternalLink, Link, Loader } from "lucide-react";
+import { Book, Link, Loader } from "lucide-react";
 import useTools from "@/hooks/useTools";
+import useConnectWallet from "@/hooks/useConnectWallet";
 
 function Body() {
+  const { loginAndNavigate, isConnecting, user } = useConnectWallet();
   return (
     <div className="flex flex-col items-center justify-center mt-32 h-full w-full">
       <div className="flex items-center gap-2">
@@ -20,7 +22,9 @@ function Body() {
         Starter template for building React apps with Azle
       </h2>
       <div className="flex items-center flex-col md:flex-row mt-8 gap-4 md:gap-8">
-        <Button variant="default">Explore Demo</Button>
+        <Button variant="default" onClick={loginAndNavigate}>
+          {isConnecting ? <Loader className="animate-spin" /> : "Explore Demo"}
+        </Button>
         <Button
           variant="link"
           className="flex items-center gap-1 justify-center"

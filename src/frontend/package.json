@@ -15,7 +15,7 @@
     "@dfinity/identity": "^2.4.1",
     "@dfinity/ledger-icp": "^4.1.0",
     "@dfinity/principal": "^2.4.1",
-    "@dfinity/utils": "^2.13.1",
+    "@dfinity/utils": "^2.14.0",
     "@hookform/resolvers": "^5.1.1",
     "@nfid/identitykit": "^1.0.14",
     "@radix-ui/react-alert-dialog": "^1.1.15",
