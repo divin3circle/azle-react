@@ -96,7 +96,7 @@ function Landing() {
     navigate("/dashboard");
   }
   return (
-    <div className="max-w-[1240px] mx-auto my-0 px-4 min-h-screen flex-col items-start flex">
+    <div className="max-w-7xl mx-auto my-0 px-4 min-h-screen flex-col items-start flex">
       <Navbar />
       <Body />
       <Tools />

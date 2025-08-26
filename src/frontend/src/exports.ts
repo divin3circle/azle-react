@@ -6,6 +6,7 @@ import tanstack from "../public/tanstack.png";
 import reactRouter from "../public/reactrouter.svg";
 import shadcnui from "../public/shadcnui.png";
 import tailwindcss from "../public/tailwindcss.png";
+import nfid from "../public/nfid.png";
 
 export {
   viteLogo,
@@ -16,4 +17,5 @@ export {
   reactRouter,
   shadcnui,
   tailwindcss,
+  nfid,
 };

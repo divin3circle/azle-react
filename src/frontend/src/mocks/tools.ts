@@ -1,5 +1,6 @@
 import {
   motion,
+  nfid,
   reactRouter,
   shadcnui,
   tailwindcss,
@@ -44,5 +45,11 @@ export const TOOLS: Tool[] = [
     description: "A utility-first CSS framework for creating custom designs",
     icon: tailwindcss,
     link: "https://tailwindcss.com/",
+  },
+  {
+    name: "NFID",
+    description: "A secure and easy way to manage your digital identity",
+    icon: nfid,
+    link: "https://identitykit.xyz/docs/",
   },
 ];
