@@ -9,5 +9,8 @@
   "workspaces": [
     "src/backend",
     "src/frontend"
-  ]
+  ],
+  "dependencies": {
+    "azle": "^0.33.0"
+  }
 }
