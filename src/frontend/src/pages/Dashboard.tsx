@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { azleLogo, viteLogo } from "@/exports";
 import useConnectWallet from "@/hooks/useConnectWallet";
 
 function Dashboard() {
@@ -15,6 +17,55 @@ function Dashboard() {
             </span>
           </p>
         </Button>
+      </div>
+      <div className="flex items-center gap-2 justify-center w-full mt-12">
+        <img src={viteLogo} alt="Vite logo" className="h-12" />
+        <h1 className="font-bold text-3xl text-primary">+</h1>
+        <img src={azleLogo} alt="Azle logo" className="h-12" />
+      </div>
+      <h2 className="text-2xl text-center text-primary mt-4 font-semibold">
+        Simple Note Taker
+      </h2>
+      <h2 className="text-primary mt-2 text-center text-sm">
+        A simple note-taking app built with React and Azle(Typescript)
+      </h2>
+      <div className="mt-12 flex flex-col items-center w-full">
+        <div className="flex w-full max-w-lg items-center gap-2">
+          <Input type="text" placeholder="Enter Message Here" maxLength={50} />
+          <Button type="submit" variant="outline" className="text-sm">
+            Save Note
+          </Button>
+        </div>
+      </div>
+      <div className="border-t border-muted mt-12 pt-4 max-w-xl my-0 mx-auto flex flex-col items-start w-full">
+        <h3 className="text-xl font-semibold text-primary">My Notes</h3>
+        <ul className="mt-2 w-full">
+          <li className="border-b border-muted py-2 w-full mt-2">
+            <span className="font-medium">#01</span>
+            <div className="flex items-center justify-between w-full">
+              <p className="text-sm text-muted-foreground">
+                This is the first note.
+              </p>
+              <p className="text-xs text-muted-foreground">
+                2024-10-01 10:00 AM
+              </p>
+            </div>
+          </li>
+          <li className="border-b border-muted py-2 w-full mt-2">
+            <span className="font-medium">#02</span>
+            <div className="flex items-center justify-between w-full">
+              <p className="text-sm text-muted-foreground">
+                This is the second note.
+              </p>
+              <p className="text-xs text-muted-foreground">
+                2024-10-01 10:00 AM
+              </p>
+            </div>
+          </li>
+        </ul>
+        <p className="text-sm text-muted-foreground mt-8 text-center w-full">
+          You have 2 notes.
+        </p>
       </div>
     </div>
   );
