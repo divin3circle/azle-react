@@ -1,9 +1,10 @@
 # ICP Development Environment with Azle and React
 
 This template gives you everything you need to build a full-stack Web3 application on the [Internet Computer](https://internetcomputer.org/).
-It includes a frontend built with Vite and React, and a backend written in JS/TS (Azle).
+It includes a frontend built with Vite and React + Tailwindcss, TanstackQuery etc, and a backend written in JS/TS (Azle).
 
 ## Get started with one click:
+
 ### Locally:
 
 Make sure you have you have the latest version of Docker (e.g. >25) and VS Code installed and running, then click the button below
@@ -12,14 +13,13 @@ Make sure you have you have the latest version of Docker (e.g. >25) and VS Code 
 
 ### In your browser:
 
-In Gitpod 
+In Gitpod
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/fxgst/azle-react/)
 
 or GitHub Codespaces
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/fxgst/azle-react/?quickstart=1)
-
 
 ## 🚀 Develop
 
@@ -39,7 +39,7 @@ To interact with the backend canister smart contract, you can use `dfx` on the c
 
 ```bash
 dfx canister call backend greet '("Dom")' # Call the greet query function with the argument "Dom"
-# or 
+# or
 dfx canister call backend setMessage '("GM")' # Call the setMessage update function
 ```
 
