@@ -1,9 +1,9 @@
+import { backend } from "@/utils";
 import { useMutation, QueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { backend } from "../../../declarations/backend";
 
 export default function useCreateNoteMutation() {
-  const mutation = useMutation({
+  const {mutate:mutation, isPending, isSuccess} = useMutation({
     mutationFn: async (message: string) => {
       const response = await backend.setNote(message);
       return response;
@@ -20,5 +20,5 @@ export default function useCreateNoteMutation() {
       console.log("Note creation process completed");
     },
   });
-  return mutation;
+  return {mutation, isPending, isSuccess};
 }

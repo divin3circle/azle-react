@@ -6,7 +6,6 @@ export default function useGetNotes(){
     const {data, isLoading, error} = useQuery({
         queryKey: ["notes"],
         queryFn: async () => {
-            console.log(backend)
             return await backend.getNotes();
         }
     })

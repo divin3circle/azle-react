@@ -3,12 +3,35 @@ import { Input } from "@/components/ui/input";
 import { azleLogo, viteLogo } from "@/exports";
 import useConnectWallet from "@/hooks/useConnectWallet";
 import useGetNotes from "@/hooks/useGetNotes";
+import useCreateNoteMutation from "@/hooks/useCreateNoteMutation";
+import { Loader2 } from "lucide-react";
+import { useState } from "react";
 
 
 function Dashboard() {
   const { disconnect, user } = useConnectWallet();
+  const {isPending, isSuccess, mutation:createNote} = useCreateNoteMutation();
+  const [note, setNote] = useState("");
   const { data, isLoading, error } = useGetNotes();
-  console.log(data);
+
+  if(error || !data){
+    return (
+      <div className="h-screen max-w-7xl mx-auto px-2">
+        <div className="flex items-center justify-center h-full">
+          <p className="text-sm text-muted-foreground">
+            {error ? error.message : "No notes found"}
+          </p>
+        </div>
+      </div>
+    )
+  }
+
+  const handleCreateNote = () => {
+    console.log(note);
+    createNote(note);
+    setNote("");
+  }
+
   return (
     <div className="h-screen max-w-7xl mx-auto px-2">
       <div className="flex items-center justify-between mt-4">
@@ -35,40 +58,36 @@ function Dashboard() {
       </h2>
       <div className="mt-12 flex flex-col items-center w-full">
         <div className="flex w-full max-w-lg items-center gap-2">
-          <Input type="text" placeholder="Enter Message Here" maxLength={50} />
-          <Button type="submit" variant="outline" className="text-sm">
-            Save Note
+          <Input type="text" placeholder="Enter Message Here" maxLength={50} value={note} onChange={(e) => setNote(e.target.value)} />
+          <Button type="submit" variant="outline" className="text-sm" onClick={handleCreateNote} disabled={!note} >
+            {isPending ? <Loader2 className="animate-spin" /> : "Save Note"}
           </Button>
         </div>
       </div>
       <div className="border-t border-muted mt-12 pt-4 max-w-xl my-0 mx-auto flex flex-col items-start w-full">
         <h3 className="text-xl font-semibold text-primary">My Notes</h3>
         <ul className="mt-2 w-full">
-          <li className="border-b border-muted py-2 w-full mt-2">
-            <span className="font-medium">#01</span>
-            <div className="flex items-center justify-between w-full">
-              <p className="text-sm text-muted-foreground">
-                This is the first note.
-              </p>
-              <p className="text-xs text-muted-foreground">
-                2024-10-01 10:00 AM
-              </p>
-            </div>
-          </li>
-          <li className="border-b border-muted py-2 w-full mt-2">
-            <span className="font-medium">#02</span>
-            <div className="flex items-center justify-between w-full">
-              <p className="text-sm text-muted-foreground">
-                This is the second note.
-              </p>
-              <p className="text-xs text-muted-foreground">
-                2024-10-01 10:00 AM
-              </p>
-            </div>
-          </li>
+          {data.length > 0 && data.map((note, index) => (
+         <li className="border-b border-muted py-2 w-full mt-2" key={index}>
+         <span className="font-medium">#{note.id}</span>
+         <div className="flex items-center justify-between w-full">
+           <p className="text-sm text-muted-foreground">
+             {note.content}
+           </p>
+           <p className="text-xs text-muted-foreground">
+             {new Date(Number(note.createdAt)).toLocaleString()}
+           </p>
+         </div>
+       </li>
+          ))}
+          {isLoading && !data && (
+            <li className="border-b border-muted py-2 w-full mt-2">
+              <Loader2 className="animate-spin" />
+            </li>
+          )}
         </ul>
         <p className="text-sm text-muted-foreground mt-8 text-center w-full">
-          You have 2 notes.
+          You have {data.length} notes.
         </p>
       </div>
     </div>
