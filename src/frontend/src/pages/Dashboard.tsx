@@ -2,9 +2,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { azleLogo, viteLogo } from "@/exports";
 import useConnectWallet from "@/hooks/useConnectWallet";
+import useGetNotes from "@/hooks/useGetNotes";
+
 
 function Dashboard() {
   const { disconnect, user } = useConnectWallet();
+  const { data, isLoading, error } = useGetNotes();
+  console.log(data);
   return (
     <div className="h-screen max-w-7xl mx-auto px-2">
       <div className="flex items-center justify-between mt-4">
