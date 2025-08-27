@@ -6,6 +6,7 @@ import {
   tailwindcss,
   tanstack,
   zustand,
+  azleLogo,
 } from "@/exports";
 import { Tool } from "@/types";
 
@@ -21,6 +22,12 @@ export const TOOLS: Tool[] = [
     description: "A set of high-quality UI components for React",
     icon: shadcnui,
     link: "https://ui.shadcn.com/",
+  },
+  {
+    name: "Azle",
+    description: "A smart contract CDK for the Internet Computer",
+    icon: azleLogo,
+    link: "https://azle.io/",
   },
   {
     name: "Framer Motion",
