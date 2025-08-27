@@ -14,12 +14,12 @@ function Dashboard() {
   const [note, setNote] = useState("");
   const { data, isLoading, error } = useGetNotes();
 
-  if(error || !data){
+  if(error){
     return (
       <div className="h-screen max-w-7xl mx-auto px-2">
         <div className="flex items-center justify-center h-full">
           <p className="text-sm text-muted-foreground">
-            {error ? error.message : "No notes found"}
+            {error.message}
           </p>
         </div>
       </div>
@@ -67,7 +67,7 @@ function Dashboard() {
       <div className="border-t border-muted mt-12 pt-4 max-w-xl my-0 mx-auto flex flex-col items-start w-full">
         <h3 className="text-xl font-semibold text-primary">My Notes</h3>
         <ul className="mt-2 w-full">
-          {data.length > 0 && data.map((note, index) => (
+          {data && data.length > 0 && data.map((note, index) => (
          <li className="border-b border-muted py-2 w-full mt-2" key={index}>
          <span className="font-medium">#{note.id}</span>
          <div className="flex items-center justify-between w-full">
@@ -87,7 +87,7 @@ function Dashboard() {
           )}
         </ul>
         <p className="text-sm text-muted-foreground mt-8 text-center w-full">
-          You have {data.length} notes.
+          You have {data && data.length} notes.
         </p>
       </div>
     </div>

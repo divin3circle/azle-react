@@ -7,7 +7,6 @@ export default function useConnectWallet() {
   const { connect, disconnect, isConnecting, user } = useAuth();
   useEffect(() => {
     if (user) {
-      toast.success("Successfully connected wallet!");
       navigate("/dashboard");
     }
     if (!user) {

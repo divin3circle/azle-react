@@ -9,5 +9,5 @@ export type Note = {
 export const Note = IDL.Record({
   id: IDL.Text,
   content: IDL.Text,
-  createdAt: IDL.Nat,
+  createdAt: IDL.Int64,
 });

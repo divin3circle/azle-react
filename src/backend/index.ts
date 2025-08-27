@@ -1,11 +1,10 @@
-import { IDL, query, update, msgCaller } from "azle";
+import { IDL, query, update, msgCaller, Principal } from "azle";
 import { NotesStore } from "./stores/notes";
 import { Note } from "./types";
 
 export default class {
-  @query([], IDL.Vec(Note))
-  getNotes(): Note[] {
-    const userID = msgCaller();
+  @query([IDL.Principal], IDL.Vec(Note))
+  getNotes(userID: Principal): Note[] {
     if (!userID) {
       console.log("User not authenticated");
       return [];
@@ -13,9 +12,8 @@ export default class {
     return NotesStore.get(userID) || [];
   }
 
-  @update([IDL.Text], IDL.Bool)
-  setNote(message: string): boolean {
-    const userID = msgCaller();
+  @update([IDL.Principal,IDL.Text], IDL.Bool)
+  setNote(userID: Principal, message: string): boolean {
     if (!userID) {
       console.log("User not authenticated");
       return false;
@@ -23,16 +21,15 @@ export default class {
     const timestamp = new Date().getTime();
     const userNotes = NotesStore.get(userID) || [];
     userNotes.push({
-      id: this.getNextNoteID(),
+      id: this.getNextNoteID(userID),
       content: message,
       createdAt: timestamp,
     });
     NotesStore.insert(userID, userNotes);
     return true;
   }
-  @query([], IDL.Text)
-  getNextNoteID(): string {
-    const userID = msgCaller();
+  @query([IDL.Principal], IDL.Text)
+  getNextNoteID(userID: Principal): string {
     if (!userID) {
       console.log("User not authenticated");
       return "-1";
