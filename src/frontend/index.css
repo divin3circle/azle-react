@@ -115,7 +115,7 @@ body {
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply  outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
@@ -163,7 +163,7 @@ body {
 /*
   Custom utility classes for all color variables
   Now you can use:
-    bg-background, text-foreground, border-border, etc.
+    bg-background, text-foreground, , etc.
 */
 .bg-background {
   background-color: var(--color-background);
@@ -277,10 +277,10 @@ body {
 .text-popover-foreground {
   color: var(--color-popover-foreground);
 }
-.text-primary {
+. {
   color: var(--color-primary);
 }
-.text-primary-foreground {
+.-foreground {
   color: var(--color-primary-foreground);
 }
 .text-secondary {
@@ -398,7 +398,7 @@ body {
 .border-destructive {
   border-color: var(--color-destructive);
 }
-.border-border {
+. {
   border-color: var(--color-border);
 }
 .border-input {

@@ -4,7 +4,7 @@ import { azleLogo, viteLogo } from "@/exports";
 import useConnectWallet from "@/hooks/useConnectWallet";
 import useGetNotes from "@/hooks/useGetNotes";
 import useCreateNoteMutation from "@/hooks/useCreateNoteMutation";
-import { Loader2 } from "lucide-react";
+import { Loader2, Sun } from "lucide-react";
 import { useState } from "react";
 
 
@@ -38,34 +38,39 @@ function Dashboard() {
         <Button variant="outline" className="rounded-3xl" onClick={disconnect}>
           <p className="text-sm text-muted-foreground">
             Connected as:{" "}
-            <span className="font-medium text-primary">
+            <span className="font-medium ">
               {user?.principal.toString().slice(0, 6)}...
               {user?.principal.toString().slice(-4)}
             </span>
           </p>
         </Button>
+        <div>
+          <Sun size={24} className="cursor-pointer" onClick={() => {
+            document.body.classList.toggle("dark");
+          }} />
+        </div>
       </div>
       <div className="flex items-center gap-2 justify-center w-full mt-12">
         <img src={viteLogo} alt="Vite logo" className="h-12" />
-        <h1 className="font-bold text-3xl text-primary">+</h1>
+        <h1 className="font-bold text-3xl ">+</h1>
         <img src={azleLogo} alt="Azle logo" className="h-12" />
       </div>
-      <h2 className="text-2xl text-center text-primary mt-4 font-semibold">
+      <h2 className="text-2xl text-center  mt-4 font-semibold">
         Simple Note Taker
       </h2>
-      <h2 className="text-primary mt-2 text-center text-sm">
+      <h2 className=" mt-2 text-center text-sm">
         A simple note-taking app built with React and Azle(Typescript)
       </h2>
       <div className="mt-12 flex flex-col items-center w-full">
         <div className="flex w-full max-w-lg items-center gap-2">
           <Input type="text" placeholder="Enter Message Here" maxLength={50} value={note} onChange={(e) => setNote(e.target.value)} />
-          <Button type="submit" variant="outline" className="text-sm" onClick={handleCreateNote} disabled={!note} >
+          <Button type="submit" variant="outline" className="text-sm text-black" onClick={handleCreateNote} disabled={!note} >
             {isPending ? <Loader2 className="animate-spin" /> : "Save Note"}
           </Button>
         </div>
       </div>
       <div className="border-t border-muted mt-12 pt-4 max-w-xl my-0 mx-auto flex flex-col items-start w-full">
-        <h3 className="text-xl font-semibold text-primary">My Notes</h3>
+        <h3 className="text-xl font-semibold ">My Notes</h3>
         <ul className="mt-2 w-full">
           {data && data.length > 0 && data.map((note, index) => (
          <li className="border-b border-muted py-2 w-full mt-2" key={index}>

@@ -12,13 +12,13 @@ function Body() {
     <div className="flex flex-col items-center justify-center mt-32 h-full w-full">
       <div className="flex items-center gap-2">
         <img src={viteLogo} alt="Vite logo" className="h-44" />
-        <h1 className="font-bold text-6xl text-primary">+</h1>
+        <h1 className="font-bold text-6xl ">+</h1>
         <img src={azleLogo} alt="Azle logo" className="h-44" />
       </div>
-      <h2 className="text-2xl text-primary mt-4 font-semibold">
+      <h2 className="text-2xl  mt-4 font-semibold">
         React + Vite + Azle
       </h2>
-      <h2 className="text-primary mt-2 text-sm">
+      <h2 className=" mt-2 text-sm">
         Starter template for building React apps with Azle
       </h2>
       <div className="flex items-center flex-col md:flex-row mt-8 gap-4 md:gap-8">
@@ -49,7 +49,7 @@ function Tools() {
   if (isLoading) {
     return (
       <div className="w-ful h-full flex items-center justify-center mt-16 mb-4">
-        <Loader className="animate-spin text-primary" />
+        <Loader className="animate-spin " />
       </div>
     );
   }
@@ -67,7 +67,7 @@ function Tools() {
         data.map((tool) => (
           <div
             key={tool.name}
-            className="border rounded-3xl p-4 border-border flex items-center gap-2"
+            className="border rounded-3xl p-4  flex items-center gap-2"
           >
             <img
               src={tool.icon}
@@ -80,12 +80,12 @@ function Tools() {
                 <a
                   href={tool.link}
                   target="_blank"
-                  className="text-primary text-sm"
+                  className=" text-sm"
                 >
                   <Link size={14} />
                 </a>
               </div>
-              <p className="text-primary text-sm">{tool.description}</p>
+              <p className=" text-sm">{tool.description}</p>
             </div>
           </div>
         ))}
