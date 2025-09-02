@@ -44,4 +44,19 @@ export default class {
     const currentID = userNotes.length + 1;
     return currentID.toString();
   }
+  @query([IDL.Principal,IDL.Text], IDL.Opt(Note))
+  getNote(userID: Principal, id: string): Note | null {
+    if (!userID) {
+      console.log("User not authenticated");
+      return null;
+    }
+    return NotesStore.get(userID).find((note) => note.id === id) || "-1";
+  }
+  @update([IDL.Principal,IDL.Text], IDL.Bool)
+  deleteNote(userID: Principal, id: string): boolean {
+    if (!userID) {
+      console.log("User not authenticated");
+      return false;
+    }
+  }
 }
