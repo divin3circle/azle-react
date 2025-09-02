@@ -50,7 +50,8 @@ export default class {
       console.log("User not authenticated");
       return [];
     }
-    const note = NotesStore.get(userID)?.find((note) => note.id === id);
+    const userNotes = NotesStore.get(userID) || [];
+    const note = userNotes.find((note) => note.id === id);
     return note ? [note] : [];
   }
 
