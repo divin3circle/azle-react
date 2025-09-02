@@ -1,5 +1,7 @@
 {
   "name": "icp_azle_react",
+  "author": "divin3circle",
+  "license": "MIT",
   "scripts": {
     "build": "npm run build --workspaces --if-present",
     "prebuild": "npm run prebuild --workspaces --if-present",
