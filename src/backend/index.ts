@@ -45,18 +45,13 @@ export default class {
     return currentID.toString();
   }
   @query([IDL.Principal,IDL.Text], IDL.Opt(Note))
-  getNote(userID: Principal, id: string): Note | null {
+  getNote(userID: Principal, id: string): [Note] | [] {
     if (!userID) {
       console.log("User not authenticated");
-      return null;
+      return [];
     }
-    return NotesStore.get(userID).find((note) => note.id === id) || "-1";
+    const note = NotesStore.get(userID)?.find((note) => note.id === id);
+    return note ? [note] : [];
   }
-  @update([IDL.Principal,IDL.Text], IDL.Bool)
-  deleteNote(userID: Principal, id: string): boolean {
-    if (!userID) {
-      console.log("User not authenticated");
-      return false;
-    }
-  }
+
 }
